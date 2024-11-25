@@ -1,0 +1,39 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: TestTaskForWork
+  logging:
+    level:
+      org.springframework.security: DEBUG
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+    mongodb:
+      uri: mongodb://localhost:27017/statistics
+  main:
+    allow-bean-definition-overriding: true
+app:
+  redis:
+    enabled: true
+  cache:
+    cacheType: redis
+    cacheNames:
+      - staticsByDateRange
+      - staticsByParentAsin
+      - staticsByParentAsinIn
+      - staticsByAsin
+      - staticsByAsinSummary
+    caches:
+      staticsByDateRange:
+        expiry: 10m
+      staticsByParentAsin:
+        expiry: 15m
+      staticsByParentAsinIn:
+        expiry: 20m
+      staticsByAsin:
+        expiry: 10m
+      staticsByAsinSummary:
+        expiry: 10m
